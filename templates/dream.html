@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reiciendis ut alias perferendis corporis pariatur numquam quod beatae rerum ipsa?</p>
+    </div>
+        
+            <form action="{{ url_for('dream') }}" method="POST">
+                <label for="Name">Your Name Please ? </label>
+                <input type="text" name="Name">
+                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> 
+                <button type="submit">Submit</button>
+            </form>
+        
+
+<p>
+ 
+</p>
+{% endblock %}

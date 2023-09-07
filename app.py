@@ -1,6 +1,10 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
+from flask_wtf import CSRFProtect
 
 app = Flask(__name__)
+app.secret_key = b'_53oi3uriq9pifpff;apl'
+csrf = CSRFProtect(app)
+
 
 @app.route("/")
 def home():
@@ -21,6 +25,13 @@ def profile():
 @app.route("/table")
 def table():
     return render_template('table.html')
+
+@app.route("/dream", methods=['POST', 'GET'])
+def dream():
+    if request.method == 'POST':
+        name = request.form['Name']
+        return (' Hello ' + name + '!!!')
+    return render_template('dream.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
